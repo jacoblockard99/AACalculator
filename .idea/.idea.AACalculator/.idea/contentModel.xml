@@ -13,6 +13,7 @@
       <e p="AACalculator" t="IncludeRecursive">
         <e p="AACalculator.csproj" t="IncludeRecursive" />
         <e p="Army.cs" t="Include" />
+        <e p="IHitSelector.cs" t="Include" />
         <e p="UnitType.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
