@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="517cfb6c-e319-40f1-abf5-43d63db98702" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/AACalculator/UnitType.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/UnitTypeTest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AACalculator/Army.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AACalculator/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AACalculator/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AACalculator.sln" beforeDir="false" afterPath="$PROJECT_DIR$/AACalculator.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.AACalculator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AACalculator/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,12 +14,16 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///home/jacob/RiderProjects/AACalculator/AACalculator/UnitType.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/AACalculator/Enum.cs" />
       <option value="$PROJECT_DIR$/Tests/UnitTest1.cs" />
       <option value="$PROJECT_DIR$/Tests/UnitTypeTest.cs" />
       <option value="$PROJECT_DIR$/AACalculator/UnitType.cs" />
+      <option value="$PROJECT_DIR$/AACalculator/Army.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1nclUKOo9uFCfyCyOaTFDKprhEt" />
@@ -45,7 +48,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1611697289453</updated>
-      <workItem from="1611697331704" duration="2492000" />
+      <workItem from="1611697331704" duration="4869000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit&#10;&#10;Create a new Project called AACalculator that will be capable of calculating the odds of winning a battle in Axis &amp; Allies and the approximate units remaining after the battle.">
       <created>1611697504060</created>
@@ -54,7 +57,21 @@
       <option name="project" value="LOCAL" />
       <updated>1611697504060</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Write UnitType&#10;&#10;Create a new class called UnitType and write a unit test for it.">
+      <created>1611700233391</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1611700233391</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Write UnitType&#10;&#10;Create a new class called UnitType and write a unit test for it.">
+      <created>1611700286691</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1611700286691</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -76,38 +93,7 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Initial Commit&#10;&#10;Create a new Project called AACalculator that will be capable of calculating the odds of winning a battle in Axis &amp; Allies and the approximate units remaining after the battle." />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit&#10;&#10;Create a new Project called AACalculator that will be capable of calculating the odds of winning a battle in Axis &amp; Allies and the approximate units remaining after the battle." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/AACalculator/UnitType.cs</url>
-          <line>47</line>
-          <properties documentPath="$PROJECT_DIR$/AACalculator/UnitType.cs" initialLine="42" containingFunctionPresentation="constructor 'UnitType'">
-            <startOffsets>
-              <option value="1969" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1986" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/AACalculator/UnitType.cs</url>
-          <line>29</line>
-          <properties documentPath="$PROJECT_DIR$/AACalculator/UnitType.cs" initialLine="29" containingFunctionPresentation="constructor 'UnitType'">
-            <startOffsets>
-              <option value="1317" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1347" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Write UnitType&#10;&#10;Create a new class called UnitType and write a unit test for it." />
+    <option name="LAST_COMMIT_MESSAGE" value="Write UnitType&#10;&#10;Create a new class called UnitType and write a unit test for it." />
   </component>
 </project>
