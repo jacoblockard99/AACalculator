@@ -8,13 +8,16 @@ namespace AACalculator
     {
         public ImmutableList<RoundResult> Rounds { get; }
         public BattleWinner Winner { get; }
-        public Army RemainingArmy { get; }
+        public Army FinalAttacker { get; }
+        public Army FinalDefender { get; }
+        public Army RemainingArmy => Winner == BattleWinner.Attacker ? FinalAttacker : FinalDefender;
 
-        public BattleResult(IEnumerable<RoundResult> rounds, BattleWinner winner, Army remainingArmy)
+        public BattleResult(IEnumerable<RoundResult> rounds, BattleWinner winner, Army finalAttacker, Army finalDefender)
         {
             Rounds = rounds.ToImmutableList();
             Winner = winner;
-            RemainingArmy = remainingArmy;
+            FinalAttacker = finalAttacker;
+            FinalDefender = finalDefender;
         }
     }
 }

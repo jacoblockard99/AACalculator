@@ -60,5 +60,10 @@ namespace AACalculator
             values ??= new List<UnitType>();
             values.Add(this);
         }
+
+        public decimal Score(bool attacker)
+        {
+            return attacker ? Attack : Defense;
+        }
     }
 }

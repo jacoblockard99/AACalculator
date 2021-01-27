@@ -5,16 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="517cfb6c-e319-40f1-abf5-43d63db98702" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/AACalculatorConsole/AACalculatorConsole.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AACalculatorConsole/Program.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AACalculator/CSVExporter.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AACalculator/HitSelectorByScore.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AACalculator/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AACalculator/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AACalculator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AACalculator/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AACalculator.sln" beforeDir="false" afterPath="$PROJECT_DIR$/AACalculator.sln" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AACalculator/AACalculator.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/AACalculator/AACalculator.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AACalculator/Army.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AACalculator/Army.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AACalculator/BattleCalculator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AACalculator/BattleCalculator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AACalculator/BattleResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AACalculator/BattleResult.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AACalculator/IHitSelector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AACalculator/IHitSelector.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AACalculator/RoundResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AACalculator/RoundResult.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AACalculator/UnitType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AACalculator/UnitType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AACalculatorConsole/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AACalculatorConsole/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,22 +26,27 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///home/jacob/RiderProjects/AACalculator/AACalculator/Army.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/AACalculator/Enum.cs" />
       <option value="$PROJECT_DIR$/Tests/UnitTest1.cs" />
       <option value="$PROJECT_DIR$/Tests/UnitTypeTest.cs" />
       <option value="$PROJECT_DIR$/AACalculator/HitSelector.cs" />
-      <option value="$PROJECT_DIR$/AACalculator/IHitSelector.cs" />
-      <option value="$PROJECT_DIR$/AACalculator/RoundResult.cs" />
       <option value="$PROJECT_DIR$/AACalculator/BattleWinner.cs" />
       <option value="$PROJECT_DIR$/AACalculator/Side.cs" />
       <option value="$PROJECT_DIR$/AACalculator/Battle.cs" />
       <option value="$PROJECT_DIR$/AACalculator/UnitCategory.cs" />
-      <option value="$PROJECT_DIR$/AACalculator/UnitType.cs" />
-      <option value="$PROJECT_DIR$/AACalculator/BattleResult.cs" />
-      <option value="$PROJECT_DIR$/AACalculator/BattleCalculator.cs" />
+      <option value="$PROJECT_DIR$/AACalculator/RoundResult.cs" />
       <option value="$PROJECT_DIR$/AACalculator/Army.cs" />
+      <option value="$PROJECT_DIR$/AACalculator/BattleResult.cs" />
+      <option value="$PROJECT_DIR$/AACalculator/CSVExporter.cs" />
+      <option value="$PROJECT_DIR$/AACalculator/IHitSelector.cs" />
+      <option value="$PROJECT_DIR$/AACalculator/UnitType.cs" />
+      <option value="$PROJECT_DIR$/AACalculator/HitSelectorByScore.cs" />
+      <option value="$PROJECT_DIR$/AACalculator/BattleCalculator.cs" />
       <option value="$PROJECT_DIR$/AACalculatorConsole/Program.cs" />
     </changedPaths>
   </component>
@@ -89,7 +96,7 @@
       <option name="presentableId" value="Default" />
       <updated>1611697289453</updated>
       <workItem from="1611697331704" duration="11542000" />
-      <workItem from="1611765824379" duration="4962000" />
+      <workItem from="1611765824379" duration="11012000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit&#10;&#10;Create a new Project called AACalculator that will be capable of calculating the odds of winning a battle in Axis &amp; Allies and the approximate units remaining after the battle.">
       <created>1611697504060</created>
@@ -147,7 +154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611756705691</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="First test">
+      <created>1611770868085</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1611770868085</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,6 +190,26 @@
     <MESSAGE value="Write 1st implementation of IHitSelector" />
     <MESSAGE value="Fix BattleCalculator" />
     <MESSAGE value="Add unit &quot;categories&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add unit &quot;categories&quot;" />
+    <MESSAGE value="First test" />
+    <option name="LAST_COMMIT_MESSAGE" value="First test" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/AACalculator/HitSelectorByScore.cs</url>
+          <line>10</line>
+          <properties documentPath="$PROJECT_DIR$/AACalculator/HitSelectorByScore.cs" initialLine="10" containingFunctionPresentation="method 'Hit'">
+            <startOffsets>
+              <option value="252" />
+            </startOffsets>
+            <endOffsets>
+              <option value="290" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

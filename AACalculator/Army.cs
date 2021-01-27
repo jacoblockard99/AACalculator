@@ -13,6 +13,7 @@ namespace AACalculator
         public IReadOnlyDictionary<UnitType, decimal> ExtraLives => new ReadOnlyDictionary<UnitType, decimal>(extraLives);
 
         public bool Empty => Units.Count == 0 || Units.All(p => p.Value == 0);
+        public decimal UnitCount => Units.Sum(p => p.Value);
         
         private Dictionary<UnitType, decimal> units;
         private Dictionary<UnitType, decimal> extraLives;
@@ -20,7 +21,7 @@ namespace AACalculator
         public Army(Dictionary<UnitType, decimal> units)
         {
             this.units = units;
-            extraLives = units.ToDictionary(p => p.Key, p => (decimal) p.Key.ExtraLives);
+            extraLives = units.ToDictionary(p => p.Key, p => p.Key.ExtraLives * p.Value);
         }
 
         private Army(Dictionary<UnitType, decimal> units, Dictionary<UnitType, decimal> extraLives)

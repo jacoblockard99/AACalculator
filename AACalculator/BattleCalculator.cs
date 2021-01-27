@@ -28,7 +28,7 @@ namespace AACalculator
             while (Winner() == BattleWinner.None)
                 rounds.Add(DoRound());
             
-            return new BattleResult(rounds, Winner(), Winner() == BattleWinner.Attacker ? Attacker : Defender);
+            return new BattleResult(rounds, Winner(), Attacker.Clone(), Defender.Clone());
         }
 
         private BattleWinner Winner()
@@ -85,7 +85,7 @@ namespace AACalculator
         private decimal FireUnitGroup(Army army, UnitType firer, decimal units, Side side)
         {
             var hits = units * (Score(firer, side) / 6);
-            HitSelector.Hit(army, firer, hits);
+            HitSelector.Hit(army, firer, hits, side != Side.Attacker);
 
             return hits;
         }

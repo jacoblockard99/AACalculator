@@ -7,32 +7,20 @@ using Humanizer;
 
 namespace AACalculatorConsole
 {
-    class BasicHitSelector : IHitSelector
-    {
-        public void Hit(Army army, UnitType firer, decimal amt)
-        {
-            if (army.Empty) return;
-            
-            var remainder = army.Hit(army.Units.Keys.First(), amt);
-            
-            if (remainder > 0)
-                Hit(army, firer, remainder);
-        }
-    }
-    
     class Program
     {
         static void Main(string[] args)
         {
             var attacker = new Army(new Dictionary<UnitType, decimal>
             {
-                [UnitType.Infantry] = 1
+                [UnitType.Tank] = 10000,
+                [UnitType.Infantry] = 1000
             });
             var defender = new Army(new Dictionary<UnitType, decimal>
             {
-                [UnitType.Infantry] = 1
+                [UnitType.Infantry] = 15000
             });
-            var result = BattleCalculator.Calculate(attacker, defender, new BasicHitSelector());
+            var result = BattleCalculator.Calculate(attacker, defender, new HitSelectorByScore());
 
             for (var i = 0; i < result.Rounds.Count; i++)
             {
@@ -62,6 +50,9 @@ namespace AACalculatorConsole
                 Console.WriteLine("The battle was a tie!");
             else
                 Console.WriteLine("The " + result.Winner.ToString().ToLower() + " won, with " + result.RemainingArmy + " left!");
+            
+            CSVExporter.ExportScores(result, "/home/jacob/scores.csv");
+            Console.WriteLine("Scores exported.");
         }
 
         private static string Format(decimal d)
