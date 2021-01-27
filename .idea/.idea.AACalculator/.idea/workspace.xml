@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="517cfb6c-e319-40f1-abf5-43d63db98702" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/AACalculator/Army.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AACalculator/Battle.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AACalculator/BattleResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AACalculator/BattleWinner.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AACalculator/RoundResult.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AACalculator/Side.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AACalculator/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AACalculator/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AACalculator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AACalculator/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AACalculator/Army.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AACalculator/Army.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +28,15 @@
       <option value="$PROJECT_DIR$/Tests/UnitTest1.cs" />
       <option value="$PROJECT_DIR$/Tests/UnitTypeTest.cs" />
       <option value="$PROJECT_DIR$/AACalculator/UnitType.cs" />
+      <option value="$PROJECT_DIR$/AACalculator/HitSelector.cs" />
+      <option value="$PROJECT_DIR$/AACalculator/IHitSelector.cs" />
+      <option value="$PROJECT_DIR$/AACalculator/RoundResult.cs" />
+      <option value="$PROJECT_DIR$/AACalculator/BattleResult.cs" />
+      <option value="$PROJECT_DIR$/AACalculator/BattleWinner.cs" />
       <option value="$PROJECT_DIR$/AACalculator/Army.cs" />
+      <option value="$PROJECT_DIR$/AACalculator/Side.cs" />
+      <option value="$PROJECT_DIR$/AACalculator/BattleCalculator.cs" />
+      <option value="$PROJECT_DIR$/AACalculator/Battle.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1nclUKOo9uFCfyCyOaTFDKprhEt" />
@@ -48,7 +61,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1611697289453</updated>
-      <workItem from="1611697331704" duration="4869000" />
+      <workItem from="1611697331704" duration="11542000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit&#10;&#10;Create a new Project called AACalculator that will be capable of calculating the odds of winning a battle in Axis &amp; Allies and the approximate units remaining after the battle.">
       <created>1611697504060</created>
@@ -71,7 +84,21 @@
       <option name="project" value="LOCAL" />
       <updated>1611700286691</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Write 1st implementation of Army">
+      <created>1611702395935</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1611702395935</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Write 1st implementation of IHitSelector">
+      <created>1611702502870</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1611702502870</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -94,6 +121,8 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Initial Commit&#10;&#10;Create a new Project called AACalculator that will be capable of calculating the odds of winning a battle in Axis &amp; Allies and the approximate units remaining after the battle." />
     <MESSAGE value="Write UnitType&#10;&#10;Create a new class called UnitType and write a unit test for it." />
-    <option name="LAST_COMMIT_MESSAGE" value="Write UnitType&#10;&#10;Create a new class called UnitType and write a unit test for it." />
+    <MESSAGE value="Write 1st implementation of Army" />
+    <MESSAGE value="Write 1st implementation of IHitSelector" />
+    <option name="LAST_COMMIT_MESSAGE" value="Write 1st implementation of IHitSelector" />
   </component>
 </project>

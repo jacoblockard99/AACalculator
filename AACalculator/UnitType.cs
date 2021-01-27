@@ -11,7 +11,7 @@ namespace AACalculator
         public static readonly UnitType Fighter = new("Fighter", "f", 3, 4, 10, "ftr");
         public static readonly UnitType Bomber = new("Bomber", "b", 4, 1, 12, "bmr");
         public static readonly UnitType Submarine = new("Submarine", "s", 2, 1, 6, "sub");
-        public static readonly UnitType Destoyer = new("Destroyer", "d", 2, 2, 8, "dst");
+        public static readonly UnitType Destroyer = new("Destroyer", "d", 2, 2, 8, "dst");
         public static readonly UnitType AircraftCarrier = new("Aircraft Carrier", "c", 1, 2, 12, "Carrier", "car");
         public static readonly UnitType Battleship = new("Battleship", "bt", 4, 4, 16, 1, "btl");
         
