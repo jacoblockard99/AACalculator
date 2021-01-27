@@ -19,6 +19,7 @@
         <e p="IHitSelector.cs" t="Include" />
         <e p="RoundResult.cs" t="Include" />
         <e p="Side.cs" t="Include" />
+        <e p="UnitCategory.cs" t="Include" />
         <e p="UnitType.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
