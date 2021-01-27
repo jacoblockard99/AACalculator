@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Humanizer;
 
 namespace AACalculator
 {
     public class Army
     {
+        public const decimal UnitMinimum = 0.000001M;
+        
         public IReadOnlyDictionary<UnitType, decimal> Units => new ReadOnlyDictionary<UnitType, decimal>(units);
         public IReadOnlyDictionary<UnitType, decimal> ExtraLives => new ReadOnlyDictionary<UnitType, decimal>(extraLives);
 
@@ -28,29 +31,33 @@ namespace AACalculator
 
         public Army Clone()
         {
-            return new Army(new Dictionary<UnitType, decimal>(units), new Dictionary<UnitType, decimal>(extraLives));
+            return new(new Dictionary<UnitType, decimal>(units), new Dictionary<UnitType, decimal>(extraLives));
         }
 
         public decimal Hit(UnitType type, decimal amt)
         {
             if (!units.ContainsKey(type))
                 return amt;
-
+            
             if (extraLives[type] >= amt)
             {
                 extraLives[type] -= amt;
+                return 0;
             }
             else
             {
                 var remainder = amt - extraLives[type];
                 extraLives[type] = 0;
-                
-                return Hit(type, remainder);
+                amt = remainder;
             }
 
             if (units[type] >= amt)
             {
                 units[type] -= amt;
+                
+                if (units[type] <= UnitMinimum)
+                    units.Remove(type);
+                
                 return 0;
             }
             else
@@ -60,6 +67,16 @@ namespace AACalculator
                 
                 return remainder;
             }
+        }
+
+        public override string ToString()
+        {
+            return string.Join(", ", units.Select(p => $"{p.Value:0.####} {ProperName(p.Key, p.Value)}"));
+        }
+
+        private static string ProperName(UnitType type, decimal amt)
+        {
+            return (amt == 1 ? type.Name : type.PluralName).ToLower();
         }
     }
 }

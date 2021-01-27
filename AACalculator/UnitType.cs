@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Humanizer;
 using static AACalculator.UnitCategory;
 
 namespace AACalculator
 {
     public class UnitType
     {
-        public static readonly UnitType Infantry = new("Infantry", "i", Land, 1, 2, 3, "inf");
+        public static readonly UnitType Infantry = new("Infantry", "Infantry", "i", Land, 1, 2, 3, "inf");
         public static readonly UnitType Tank = new("Tank", "t", Land, 3, 3, 6, "tnk");
         public static readonly UnitType Fighter = new("Fighter", "f", Air, 3, 4, 10, "ftr");
         public static readonly UnitType Bomber = new("Bomber", "b", Air, 4, 1, 12, "bmr");
@@ -20,6 +21,7 @@ namespace AACalculator
         private static List<UnitType> values;
         
         public string Name { get; }
+        public string PluralName { get; }
         public string ShortName { get; }
         public IReadOnlyCollection<string> Aliases { get; }
         public int Attack { get; }
@@ -27,15 +29,26 @@ namespace AACalculator
         public int Cost { get; }
         public int ExtraLives { get; }
         public UnitCategory Category { get; }
-
+        
         private UnitType(string name, string shortName, UnitCategory category, int attack, int defense, int cost, params string[] aliases) : this(name,
             shortName, category, attack, defense, cost, 0, aliases)
         {
         }
+        
+        private UnitType(string name, string shortName, UnitCategory category, int attack, int defense, int cost, int extraLives, params string[] aliases) : this(name, name.Pluralize(),
+            shortName, category, attack, defense, cost, extraLives, aliases)
+        {
+        }
 
-        private UnitType(string name, string shortName, UnitCategory category, int attack, int defense, int cost, int extraLives, params string[] aliases)
+        private UnitType(string name, string pluralName, string shortName, UnitCategory category, int attack, int defense, int cost, params string[] aliases) : this(name, pluralName,
+            shortName, category, attack, defense, cost, 0, aliases)
+        {
+        }
+
+        private UnitType(string name, string pluralName, string shortName, UnitCategory category, int attack, int defense, int cost, int extraLives, params string[] aliases)
         {
             Name = name;
+            PluralName = pluralName;
             ShortName = shortName;
             Category = category;
             Attack = attack;

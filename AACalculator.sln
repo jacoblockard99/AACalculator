@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AACalculator", "AACalculato
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{D9FEAAAF-CA31-498A-A23E-2E4C47093EA1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AACalculatorConsole", "AACalculatorConsole\AACalculatorConsole.csproj", "{39442570-80E3-4E15-93DD-6792D38938AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{D9FEAAAF-CA31-498A-A23E-2E4C47093EA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9FEAAAF-CA31-498A-A23E-2E4C47093EA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9FEAAAF-CA31-498A-A23E-2E4C47093EA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39442570-80E3-4E15-93DD-6792D38938AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39442570-80E3-4E15-93DD-6792D38938AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39442570-80E3-4E15-93DD-6792D38938AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39442570-80E3-4E15-93DD-6792D38938AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
