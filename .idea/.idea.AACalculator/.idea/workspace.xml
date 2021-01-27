@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="517cfb6c-e319-40f1-abf5-43d63db98702" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/AACalculator/Battle.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AACalculator/BattleResult.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AACalculator/BattleWinner.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AACalculator/RoundResult.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AACalculator/Side.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.AACalculator/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AACalculator/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.AACalculator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AACalculator/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AACalculator/Army.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AACalculator/Army.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AACalculator/BattleCalculator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AACalculator/BattleCalculator.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +13,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///home/jacob/RiderProjects/AACalculator/AACalculator/BattleCalculator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/jacob/RiderProjects/AACalculator/AACalculator/UnitType.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jacob/RiderProjects/AACalculator/AACalculator/BattleCalculator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/jacob/RiderProjects/AACalculator/AACalculator/Army.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -35,8 +31,8 @@
       <option value="$PROJECT_DIR$/AACalculator/BattleWinner.cs" />
       <option value="$PROJECT_DIR$/AACalculator/Army.cs" />
       <option value="$PROJECT_DIR$/AACalculator/Side.cs" />
-      <option value="$PROJECT_DIR$/AACalculator/BattleCalculator.cs" />
       <option value="$PROJECT_DIR$/AACalculator/Battle.cs" />
+      <option value="$PROJECT_DIR$/AACalculator/BattleCalculator.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1nclUKOo9uFCfyCyOaTFDKprhEt" />

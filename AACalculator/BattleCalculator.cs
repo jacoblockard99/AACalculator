@@ -26,9 +26,7 @@ namespace AACalculator
             var rounds = new List<RoundResult>();
             
             while (Winner() == BattleWinner.None)
-            {
                 rounds.Add(DoRound());
-            }
             
             return new BattleResult(rounds, Winner());
         }
@@ -49,12 +47,16 @@ namespace AACalculator
         {
             var roundAttacker = Attacker.Clone();
             var roundDefender = Defender.Clone();
+
+            var tempDefender = Defender.Clone();
             
             var attackerSurpriseHits = SurpriseStrike(Attacker, Defender, Side.Attacker);
-            var defenderSurpriseHits = SurpriseStrike(Defender, Attacker, Side.Defender);
+            var defenderSurpriseHits = SurpriseStrike(tempDefender, Attacker, Side.Defender);
+
+            tempDefender = Defender.Clone();
             
             var attackerHits = Fire(Attacker, Defender, Side.Attacker, attackerSurpriseHits == -1);
-            var defenderHits = Fire(Defender, Attacker, Side.Defender, defenderSurpriseHits == -1);
+            var defenderHits = Fire(tempDefender, Attacker, Side.Defender, defenderSurpriseHits == -1);
 
             return new RoundResult(roundAttacker, roundDefender, attackerHits, defenderHits, attackerSurpriseHits,
                 defenderSurpriseHits);
