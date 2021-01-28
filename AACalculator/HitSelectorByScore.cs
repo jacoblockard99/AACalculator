@@ -14,7 +14,10 @@ namespace AACalculator
             {
                 var score = type.Score(attacker);
 
-                if ((hitType == null || (score < hitType.Score(attacker) || score == hitType.Score(attacker) && type.Cost < hitType.Cost)) && HitValidator.ValidHit(firer, type, firingArmy))
+                if (!HitValidator.ValidHit(firer, type, firingArmy))
+                    continue;
+
+                if (hitType == null || score < hitType.Score(attacker) || score == hitType.Score(attacker) && type.Cost < hitType.Cost)
                     hitType = type;
             }
 
