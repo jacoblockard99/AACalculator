@@ -4,25 +4,28 @@ namespace AACalculator
 {
     public class HitSelectorByScore : IHitSelector
     {
-        public void Hit(Army army, UnitType firer, decimal amt, bool attacker)
+        public bool Hit(Army army, UnitType firer, Army firingArmy, decimal amt, bool attacker)
         {
-            if (army.Empty) return;
+            if (army.Empty) return true;
             
-            var hitType = army.Units.Keys.First();
+            UnitType hitType = null;
 
-            foreach (var type in army.Units.Keys.Skip(1))
+            foreach (var type in army.Units.Keys)
             {
                 var score = type.Score(attacker);
-                var hitScore = hitType.Score(attacker);
 
-                if (score < hitScore || score == hitScore && type.Cost < hitType.Cost)
+                if ((hitType == null || (score < hitType.Score(attacker) || score == hitType.Score(attacker) && type.Cost < hitType.Cost)) && HitValidator.ValidHit(firer, type, firingArmy))
                     hitType = type;
             }
+
+            if (hitType == null) return false;
 
             var remainder = army.Hit(hitType, amt);
 
             if (remainder > 0)
-                Hit(army, firer, remainder, attacker);
+                return Hit(army, firer, firingArmy, remainder, attacker);
+
+            return true;
         }
     }
 }

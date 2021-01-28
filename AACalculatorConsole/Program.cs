@@ -13,12 +13,12 @@ namespace AACalculatorConsole
         {
             var attacker = new Army(new Dictionary<UnitType, decimal>
             {
-                [UnitType.Tank] = 10000,
-                [UnitType.Infantry] = 1000
+                [UnitType.Fighter] = 1,
+                [UnitType.Destroyer] = 1
             });
             var defender = new Army(new Dictionary<UnitType, decimal>
             {
-                [UnitType.Infantry] = 15000
+                [UnitType.Submarine] = 4
             });
             var result = BattleCalculator.Calculate(attacker, defender, new HitSelectorByScore());
 
@@ -48,10 +48,12 @@ namespace AACalculatorConsole
             
             if (result.Winner == BattleWinner.Tie)
                 Console.WriteLine("The battle was a tie!");
+            else if (result.Winner == BattleWinner.None)
+                Console.WriteLine($"No one won the battle! The attacker was left with {result.FinalAttacker}, and the defender was left with {result.FinalDefender}.");
             else
                 Console.WriteLine("The " + result.Winner.ToString().ToLower() + " won, with " + result.RemainingArmy + " left!");
             
-            CSVExporter.ExportScores(result, "/home/jacob/scores.csv");
+            CSVExporter.ExportScores(result, "C:/Users/Jacob/scores.csv");
             Console.WriteLine("Scores exported.");
         }
 
