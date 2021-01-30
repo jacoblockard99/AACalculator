@@ -35,6 +35,11 @@ namespace AACalculator
             return new(new Dictionary<UnitType, decimal>(units), new Dictionary<UnitType, decimal>(extraLives));
         }
 
+        public bool Contains(UnitType type)
+        {
+            return Units.ContainsKey(type);
+        }
+
         public decimal Hit(UnitType type, decimal amt)
         {
             if (!units.ContainsKey(type))

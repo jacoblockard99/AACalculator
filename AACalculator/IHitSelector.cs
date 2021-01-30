@@ -2,6 +2,6 @@ namespace AACalculator
 {
     public interface IHitSelector
     {
-        void Hit(Army army, UnitType firer, decimal amt, bool attacker);
+        bool Hit(Army army, UnitType firer, Army firingArmy, decimal amt, bool attacker);
     }
 }

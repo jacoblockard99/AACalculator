@@ -13,14 +13,12 @@ namespace AACalculatorConsole
         {
             var attacker = new Army(new Dictionary<UnitType, decimal>
             {
-                [UnitType.Infantry] = 10,
-                [UnitType.Tank] = 3,
-                [UnitType.Fighter] = 1
+                [UnitType.Fighter] = 1,
+                [UnitType.Destroyer] = 1
             });
             var defender = new Army(new Dictionary<UnitType, decimal>
             {
-                [UnitType.Infantry] = 10,
-                [UnitType.Fighter] = 2
+                [UnitType.Submarine] = 4
             });
             var result = BattleCalculator.Calculate(attacker, defender, new HitSelectorByScore());
 
@@ -50,6 +48,8 @@ namespace AACalculatorConsole
             
             if (result.Winner == BattleWinner.Tie)
                 Console.WriteLine("The battle was a tie!");
+            else if (result.Winner == BattleWinner.None)
+                Console.WriteLine($"No one won the battle! The attacker was left with {result.FinalAttacker}, and the defender was left with {result.FinalDefender}.");
             else
                 Console.WriteLine($"The {result.Winner.ToString().ToLower()} won in {result.Rounds.Count} rounds, with {result.RemainingArmy} left!");
             
