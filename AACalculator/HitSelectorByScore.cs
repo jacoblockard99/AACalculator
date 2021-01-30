@@ -1,12 +1,15 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using AACalculator.Result;
 
 namespace AACalculator
 {
     public class HitSelectorByScore : IHitSelector
     {
-        public bool Hit(Army army, UnitType firer, Army firingArmy, decimal amt, bool attacker)
+        public IEnumerable<HitResult> Hit(Army army, UnitType firer, Army firingArmy, decimal amt, bool attacker)
         {
-            if (army.Empty) return true;
+            if (army.Empty) return new List<HitResult>();
             
             UnitType hitType = null;
 
@@ -21,14 +24,14 @@ namespace AACalculator
                     hitType = type;
             }
 
-            if (hitType == null) return false;
+            if (hitType == null) return new List<HitResult> { new(amt) };
 
-            var remainder = army.Hit(hitType, amt);
+            var result = army.Hit(hitType, amt);
 
-            if (remainder > 0)
-                return Hit(army, firer, firingArmy, remainder, attacker);
-
-            return true;
+            if (result.Amount == amt)
+                return new List<HitResult> { result };
+            else
+                return Hit(army, firer, firingArmy, amt - result.Amount, attacker).Prepend(result);
         }
     }
 }

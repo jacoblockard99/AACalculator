@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using AACalculator.Result;
 using Humanizer;
 
 namespace AACalculator
@@ -40,15 +42,15 @@ namespace AACalculator
             return Units.ContainsKey(type);
         }
 
-        public decimal Hit(UnitType type, decimal amt)
+        public HitResult Hit(UnitType type, decimal amt)
         {
             if (!units.ContainsKey(type))
-                return amt;
+                throw new Exception("The type does not exist!");
             
             if (extraLives[type] >= amt)
             {
                 extraLives[type] -= amt;
-                return 0;
+                return new HitResult(type, amt);
             }
             else
             {
@@ -64,14 +66,14 @@ namespace AACalculator
                 if (units[type] <= UnitMinimum)
                     units.Remove(type);
                 
-                return 0;
+                return new HitResult(type, amt);
             }
             else
             {
-                var remainder = amt - units[type];
+                var removed = units[type];
                 units.Remove(type);
                 
-                return remainder;
+                return new HitResult(type, removed);
             }
         }
 

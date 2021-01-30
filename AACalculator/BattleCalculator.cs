@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using AACalculator.Result;
 
 namespace AACalculator
 {
@@ -29,7 +30,7 @@ namespace AACalculator
             {
                 var result = DoRound();
                 rounds.Add(result);
-                if (result.AttackerTotalHits == 0 && result.DefenderTotalHits == 0)
+                if (result.AttackerResult.TotalEffectiveHits == 0 && result.DefenderResult.TotalEffectiveHits == 0)
                     break;
             }
             
@@ -55,44 +56,42 @@ namespace AACalculator
 
             var tempDefender = Defender.Clone();
             
-            var attackerSurpriseHits = SurpriseStrike(Attacker, Defender, Side.Attacker);
-            var defenderSurpriseHits = SurpriseStrike(tempDefender, Attacker, Side.Defender);
+            var attackerSurpriseResult = SurpriseStrike(Attacker, Defender, Side.Attacker);
+            var defenderSurpriseResult = SurpriseStrike(tempDefender, Attacker, Side.Defender);
 
             tempDefender = Defender.Clone();
             
-            var attackerHits = Fire(Attacker, Defender, Side.Attacker, attackerSurpriseHits == -1);
-            var defenderHits = Fire(tempDefender, Attacker, Side.Defender, defenderSurpriseHits == -1);
+            var attackerResult = Fire(Attacker, Defender, Side.Attacker, attackerSurpriseResult == null);
+            var defenderResult = Fire(tempDefender, Attacker, Side.Defender, defenderSurpriseResult == null);
 
-            return new RoundResult(roundAttacker, roundDefender, attackerHits, defenderHits, attackerSurpriseHits,
-                defenderSurpriseHits);
+            return new RoundResult(roundAttacker, roundDefender, attackerSurpriseResult, defenderSurpriseResult,
+                attackerResult, defenderResult);
         }
 
-        private decimal SurpriseStrike(Army striker, Army sustainer, Side side)
+        private FireResult SurpriseStrike(Army striker, Army sustainer, Side side)
         {
-            
             if (!CanSurpriseStrike(striker, sustainer))
-                return -1;
+                return null;
 
-            return FireUnitGroup(sustainer, UnitType.Submarine, striker, striker.Units[UnitType.Submarine], side);
+            var hits = FireUnitGroup(sustainer, UnitType.Submarine, striker, striker.Units[UnitType.Submarine], side);
+            return new FireResult(new Dictionary<UnitType, IEnumerable<HitResult>> { [UnitType.Submarine] = hits });
         }
 
-        private decimal Fire(Army firer, Army sustainer, Side side, bool subs)
+        private FireResult Fire(Army firer, Army sustainer, Side side, bool subs)
         {
-            decimal hits = 0;
+            var hits = new Dictionary<UnitType, IEnumerable<HitResult>>();
             
             foreach (var (type, amt) in firer.Units)
                 if (subs || type != UnitType.Submarine)
-                    hits += FireUnitGroup(sustainer, type, firer, amt, side);
+                    hits.Add(type, FireUnitGroup(sustainer, type, firer, amt, side));
 
-            return hits;
+            return new FireResult(hits);
         }
 
-        private decimal FireUnitGroup(Army army, UnitType firer, Army firingArmy, decimal units, Side side)
+        private IEnumerable<HitResult> FireUnitGroup(Army army, UnitType firer, Army firingArmy, decimal units, Side side)
         {
             var hits = units * (Score(firer, side) / 6);
-            var hit = HitSelector.Hit(army, firer, firingArmy, hits, side != Side.Attacker);
-
-            return hit ? hits : 0;
+            return HitSelector.Hit(army, firer, firingArmy, hits, side != Side.Attacker);
         }
 
         private static bool CanSurpriseStrike(Army striker, Army sustainer)

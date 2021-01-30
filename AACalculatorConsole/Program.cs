@@ -13,12 +13,13 @@ namespace AACalculatorConsole
         {
             var attacker = new Army(new Dictionary<UnitType, decimal>
             {
-                [UnitType.Fighter] = 1,
-                [UnitType.Destroyer] = 1
+                [UnitType.Submarine] = 5
             });
             var defender = new Army(new Dictionary<UnitType, decimal>
             {
-                [UnitType.Submarine] = 4
+                [UnitType.Fighter] = 1,
+                [UnitType.Destroyer] = 2,
+                [UnitType.Submarine] = 1
             });
             var result = BattleCalculator.Calculate(attacker, defender, new HitSelectorByScore());
 
@@ -32,14 +33,14 @@ namespace AACalculatorConsole
                 Console.WriteLine($"Attacker: {r.Attacker}");
                 Console.WriteLine($"Defender: {r.Defender}");
                 
-                if (r.AttackerSurpriseHits >= 0)
-                    Console.WriteLine($"Attacker Surprise Hits: {Format(r.AttackerSurpriseHits)}");
+                if (r.AttackerSurpriseResult != null)
+                    Console.WriteLine($"Attacker Surprise Hits: {r.AttackerSurpriseResult}");
                 
-                if (r.DefenderSurpriseHits >= 0)
-                    Console.WriteLine($"Defender Surprise Hits: {Format(r.DefenderSurpriseHits)}");
+                if (r.DefenderSurpriseResult != null)
+                    Console.WriteLine($"Defender Surprise Hits: {r.DefenderSurpriseResult}");
                 
-                Console.WriteLine($"Attacker Hits: {Format(r.AttackerHits)}");
-                Console.WriteLine($"Defender Hits: {Format(r.DefenderHits)}");
+                Console.WriteLine($"Attacker Hits: {r.AttackerResult}");
+                Console.WriteLine($"Defender Hits: {r.DefenderResult}");
                 
                 Console.WriteLine(new string('=', opening.Length));
                 Console.WriteLine();
@@ -55,11 +56,6 @@ namespace AACalculatorConsole
             
             CSVExporter.ExportScores(result, "/home/jacob/scores.csv");
             Console.WriteLine("Scores exported.");
-        }
-
-        private static string Format(decimal d)
-        {
-            return $"{d:0.##}";
         }
     }
 }

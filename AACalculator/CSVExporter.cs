@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using AACalculator.Result;
 using CsvHelper;
 
 namespace AACalculator
@@ -23,8 +24,8 @@ namespace AACalculator
             {
                 csv.WriteField(r.Attacker.UnitCount);
                 csv.WriteField(r.Defender.UnitCount);
-                csv.WriteField(r.AttackerTotalHits);
-                csv.WriteField(r.DefenderTotalHits);
+                csv.WriteField(r.AttackerResult.TotalEffectiveHits);
+                csv.WriteField(r.DefenderResult.TotalEffectiveHits);
                 csv.NextRecord();
             }
             

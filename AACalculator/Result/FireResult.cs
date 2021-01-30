@@ -28,14 +28,20 @@ namespace AACalculator.Result
                 new Lazy<decimal>(() => SumHits(FlattenedHits().Where(h => h.Ineffective)));
         }
 
-        private decimal SumHits(IEnumerable<HitResult> hits)
+        public override string ToString()
         {
-            return hits.Sum(h => h.Amount);
+            var ineffective = TotalIneffectiveHits > 0 ? $" ({TotalIneffectiveHits:0.###} ineffective)" : "";
+            return $"{TotalEffectiveHits:0.###}" + ineffective;
         }
 
         private IEnumerable<HitResult> FlattenedHits()
         {
             return Hits.SelectMany(p => p.Value);
+        }
+
+        private static decimal SumHits(IEnumerable<HitResult> hits)
+        {
+            return hits.Sum(h => h.Amount);
         }
     }
 }

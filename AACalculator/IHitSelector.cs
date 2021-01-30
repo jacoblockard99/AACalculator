@@ -1,7 +1,10 @@
+using System.Collections.Generic;
+using AACalculator.Result;
+
 namespace AACalculator
 {
     public interface IHitSelector
     {
-        bool Hit(Army army, UnitType firer, Army firingArmy, decimal amt, bool attacker);
+        IEnumerable<HitResult> Hit(Army army, UnitType firer, Army firingArmy, decimal amt, bool attacker);
     }
 }
