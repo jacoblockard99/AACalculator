@@ -18,7 +18,13 @@
         <e p="BattleWinner.cs" t="Include" />
         <e p="CSVExporter.cs" t="Include" />
         <e p="HitSelectorByScore.cs" t="Include" />
+        <e p="HitValidator.cs" t="Include" />
         <e p="IHitSelector.cs" t="Include" />
+        <e p="Result" t="Include">
+          <e p="FireResult.cs" t="Include" />
+          <e p="HitResult.cs" t="Include" />
+          <e p="RoundResult.cs" t="Include" />
+        </e>
         <e p="RoundResult.cs" t="Include" />
         <e p="Side.cs" t="Include" />
         <e p="UnitCategory.cs" t="Include" />

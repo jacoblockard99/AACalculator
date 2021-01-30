@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 
-namespace AACalculator
+namespace AACalculator.Result
 {
     public class BattleResult
     {
