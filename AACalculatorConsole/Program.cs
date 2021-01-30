@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using AACalculator;
+using AACalculator.Result;
 using Humanizer;
 
 namespace AACalculatorConsole
@@ -13,13 +14,12 @@ namespace AACalculatorConsole
         {
             var attacker = new Army(new Dictionary<UnitType, decimal>
             {
-                [UnitType.Submarine] = 5
+                [UnitType.Infantry] = 5
             });
             var defender = new Army(new Dictionary<UnitType, decimal>
             {
-                [UnitType.Fighter] = 1,
-                [UnitType.Destroyer] = 2,
-                [UnitType.Submarine] = 1
+                [UnitType.Infantry] = 2,
+                [UnitType.Tank] = 1
             });
             var result = BattleCalculator.Calculate(attacker, defender, new HitSelectorByScore());
 
@@ -53,9 +53,6 @@ namespace AACalculatorConsole
                 Console.WriteLine($"No one won the battle! The attacker was left with {result.FinalAttacker}, and the defender was left with {result.FinalDefender}.");
             else
                 Console.WriteLine($"The {result.Winner.ToString().ToLower()} won in {result.Rounds.Count} rounds, with {result.RemainingArmy} left!");
-            
-            CSVExporter.ExportScores(result, "/home/jacob/scores.csv");
-            Console.WriteLine("Scores exported.");
         }
     }
 }

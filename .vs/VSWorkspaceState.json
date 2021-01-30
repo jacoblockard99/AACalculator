@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\AACalculator",
+    "\\AACalculatorConsole",
+    "\\AACalculator\\Result"
   ],
+  "SelectedNode": "\\AACalculator\\Result\\FireResult.cs",
   "PreviewInSolutionExplorer": false
 }
