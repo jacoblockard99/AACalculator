@@ -68,7 +68,7 @@ namespace AACalculatorConsole
             return result.Winner switch
             {
                 BattleWinner.None =>
-                    $"No one won the battle! The attacker was left with {result.FinalAttacker}, and the" +
+                    $"No one won the battle! The attacker was left with {result.FinalAttacker}, and the " +
                     $"defender was left with {result.FinalDefender}.",
                 BattleWinner.Tie => "The battle was a tie! Both teams lost all their troops.",
                 _ => $"The {result.Winner.ToString().ToLower()} won, with {result.RemainingArmy} left."
