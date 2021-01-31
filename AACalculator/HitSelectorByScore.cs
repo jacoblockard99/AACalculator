@@ -23,11 +23,11 @@ namespace AACalculator
                 // Retrieve the score of the firing unit.
                 var score = type.Score(attacker);
 
-                // Check if the current arrangment is better than the currently stored one. It is better/less valuable if:
+                // Check if the current arrangement is better than the currently stored one. It is better/less valuable if:
                 //   1) The stored hitType is null, meaning that none have even been stored yet,
                 //   2) The current firing score is worse than the stored one, or
                 //   3) The current firing scores are equal, but the cost of the current one is lower than that of the stored one.
-                // If the current arrangment is better, store it.
+                // If the current arrangement is better, store it.
                 if (hitType == null || score < hitType.Score(attacker) || score == hitType.Score(attacker) && type.Cost < hitType.Cost)
                     hitType = type;
             }
@@ -35,7 +35,7 @@ namespace AACalculator
             // Check if the hitType is null. If so, no valid hits are possible. Thus, return an ineffective hit result for the appropriate amount.
             if (hitType == null) return OneHit(HitResult.NewIneffective(amt));
 
-            // Take the appropriate number of causualties from the army and capture the result.
+            // Take the appropriate number of casualties from the army and capture the result.
             var result = army.Hit(hitType, amt);
 
             // Check if the resulting hit completed the required amount.

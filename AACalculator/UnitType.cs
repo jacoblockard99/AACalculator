@@ -146,6 +146,12 @@ namespace AACalculator
             values.Add(this);
         }
 
+        /// <inheritdoc/>
+        public override string ToString()
+        {
+            return Name;
+        }
+
         /// <summary>
         /// Gets the appropriate firing score (i.e. either the "attack power" or the "defense power") for the given boolean.
         /// </summary>
@@ -154,6 +160,28 @@ namespace AACalculator
         public decimal Score(bool attacker)
         {
             return attacker ? Attack : Defense;
+        }
+
+        /// <summary>
+        /// Determines whether this unit type matches the given input string.
+        /// </summary>
+        /// <param name="input">The input string.</param>
+        /// <returns>True if this unit type matches; false otherwise</returns>
+        public bool Matches(string input)
+        {
+            return input.Equals(Name, StringComparison.OrdinalIgnoreCase) ||
+                   input.Equals(PluralName, StringComparison.OrdinalIgnoreCase) ||
+                   Aliases.Contains(input, StringComparer.OrdinalIgnoreCase);
+        }
+
+        /// <summary>
+        /// Finds the first unit type matching the given input string.
+        /// </summary>
+        /// <param name="input">The input string.</param>
+        /// <returns>The <see cref="UnitType"/> matched by the given input string, or null if no matches were found.</returns>
+        public static UnitType Find(string input)
+        {
+            return Values.FirstOrDefault(u => u.Matches(input));
         }
     }
 }

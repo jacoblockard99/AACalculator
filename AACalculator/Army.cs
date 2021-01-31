@@ -17,16 +17,16 @@ namespace AACalculator
         /// The number of units at which it is considered zero.
         /// </summary>
         public const decimal UnitMinimum = 0.000001M;
+        
+        /// <summary>
+        /// A private, mutable property behind <see cref="Units"/>.
+        /// </summary>
+        public Dictionary<UnitType, decimal> Units { get; }
 
         /// <summary>
-        /// An immutable dictionary containing the amount of each type of unit in the army.
+        /// A private, mutable property behind <see cref="ExtraLives"/>.
         /// </summary>
-        public ImmutableDictionary<UnitType, decimal> Units => _units.ToImmutableDictionary();
-
-        /// <summary>
-        /// An immutable dictionary containing the amount of extra lives of each type of unit in the army.
-        /// </summary>
-        public ImmutableDictionary<UnitType, decimal> ExtraLives => _extraLives.ToImmutableDictionary();
+        public Dictionary<UnitType, decimal> ExtraLives { get; }
 
         /// <summary>
         /// Whether the army is empty.
@@ -37,21 +37,15 @@ namespace AACalculator
         /// The total number of units in this army.
         /// </summary>
         public decimal UnitCount => Units.Sum(p => p.Value);
-        
-        /// <summary>
-        /// A private, mutable property behind <see cref="Units"/>.
-        /// </summary>
-        private readonly Dictionary<UnitType, decimal> _units;
 
-        /// <summary>
-        /// A private, mutable property behind <see cref="ExtraLives"/>.
-        /// </summary>
-        private readonly Dictionary<UnitType, decimal> _extraLives;
+        public Army() : this(new Dictionary<UnitType, decimal>())
+        {
+        }
 
         public Army(Dictionary<UnitType, decimal> units)
         {
-            _units = units;
-            _extraLives = units.ToDictionary(p => p.Key, p => p.Key.ExtraLives * p.Value);
+            Units = units;
+            ExtraLives = units.ToDictionary(p => p.Key, p => p.Key.ExtraLives * p.Value);
         }
 
         /// <summary>
@@ -61,8 +55,8 @@ namespace AACalculator
         /// <param name="extraLives">The extra lives dictionary, containing the extra lives of each unit type in the army.</param>
         private Army(Dictionary<UnitType, decimal> units, Dictionary<UnitType, decimal> extraLives)
         {
-            _units = units;
-            _extraLives = extraLives;
+            Units = units;
+            ExtraLives = extraLives;
         }
 
         /// <summary>
@@ -72,7 +66,7 @@ namespace AACalculator
         public Army Clone()
         {
             // Create new, copied dictionaries using the Dictionary constructor.
-            return new(new Dictionary<UnitType, decimal>(_units), new Dictionary<UnitType, decimal>(_extraLives));
+            return new(new Dictionary<UnitType, decimal>(Units), new Dictionary<UnitType, decimal>(ExtraLives));
         }
 
         /// <summary>
@@ -97,39 +91,39 @@ namespace AACalculator
             if (!Contains(type)) throw new KeyNotFoundException("No units of the given type exist in this Army!");
             
             // Check if the given unit type has enough lives to completely absorb the hit.
-            if (_extraLives[type] >= amt)
+            if (ExtraLives[type] >= amt)
             {
                 // If so, remove the appropriate amount of lives from the given type and immediately return an appropriate result.
-                _extraLives[type] -= amt;
+                ExtraLives[type] -= amt;
                 return new HitResult(type, amt);
             }
             else
             {
                 // If not, calculate the remainder and take what lives do exist (by setting it equal to zero).
-                var remainder = amt - _extraLives[type];
-                _extraLives[type] = 0;
+                var remainder = amt - ExtraLives[type];
+                ExtraLives[type] = 0;
 
                 // Continue hitting with the remainder.
                 amt = remainder;
             }
 
             // Check if the given unit type can completely absorb the hit.
-            if (_units[type] >= amt)
+            if (Units[type] >= amt)
             {
                 // If it can, remove the necessary number of causualties.
-                _units[type] -= amt;
+                Units[type] -= amt;
                 
                 // Check if the number of units is now at the minimum. If so, remove it.
-                if (_units[type] <= UnitMinimum)
-                    _units.Remove(type);
+                if (Units[type] <= UnitMinimum)
+                    Units.Remove(type);
                 
                 return new HitResult(type, amt);
             }
             else
             {
                 // If not, store the number of units that *will* be removed and remove the units.
-                var removed = _units[type];
-                _units.Remove(type);
+                var removed = Units[type];
+                Units.Remove(type);
                 
                 // Return a new hit result with the number of units that *were* removed.
                 return new HitResult(type, removed);
@@ -142,18 +136,53 @@ namespace AACalculator
         /// <returns>The generated string representation.</returns>
         public override string ToString()
         {
-            return string.Join(", ", _units.Select(p => $"{p.Value:0.####} {ProperName(p.Key, p.Value)}"));
+            return string.Join(", ", Units.Select(p => UnitString(p.Key)));
         }
 
         /// <summary>
-        /// Gets the proper name (with the proper pluralization) for the given unit type and amount.
+        /// Parses the given string into an <see cref="Army"/>.
+        /// </summary>
+        /// <param name="input">The input string.</param>
+        /// <returns>The parsed <see cref="Army"/>.</returns>
+        public static Army Parse(string input)
+        {
+            var units = new Dictionary<UnitType, decimal>();
+            var types = input.Split(",");
+
+            foreach (var t in types)
+            {
+                var trimmed = t.Trim();
+                var split = trimmed.Split(' ', 2);
+                var amt = decimal.Parse(split[0].Trim());
+                var name = split[1].Trim();
+                var type = UnitType.Find(name);
+                
+                units.Add(type, amt);
+            }
+
+            return new Army(units);
+        }
+
+        /// <summary>
+        /// Gets a formatted string for the given unit type containing its name, amount, and remaining lives.
+        /// </summary>
+        /// <param name="type">The unit type for which to format.</param>
+        /// <returns>The formatted unit string.</returns>
+        private string UnitString(UnitType type)
+        {
+            var livesString = ExtraLives[type] == 1 ? "life" : "lives";
+            var lives = type.ExtraLives == 0 ? "" : $" ({ExtraLives[type]:0.###} extra {livesString})";
+            return $"{Units[type]:0.###} {ProperName(type)}{lives}";
+        }
+
+        /// <summary>
+        /// Gets the proper name (with the proper pluralization) for the given unit type.
         /// </summary>
         /// <param name="type">The unit type.</param>
-        /// <param name="amt">The amount.</param>
         /// <returns>The proper name.</returns>
-        private static string ProperName(UnitType type, decimal amt)
+        private string ProperName(UnitType type)
         {
-            return (amt == 1 ? type.Name : type.PluralName).ToLower();
+            return (Units[type] == 1 ? type.Name : type.PluralName).ToLower();
         }
     }
 }
