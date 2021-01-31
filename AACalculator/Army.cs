@@ -170,6 +170,8 @@ namespace AACalculator
         /// <returns>The formatted unit string.</returns>
         private string UnitString(UnitType type)
         {
+            if (Empty) return "nothing";
+            
             var livesString = ExtraLives[type] == 1 ? "life" : "lives";
             var lives = type.ExtraLives == 0 ? "" : $" ({ExtraLives[type]:0.###} extra {livesString})";
             return $"{Units[type]:0.###} {ProperName(type)}{lives}";
