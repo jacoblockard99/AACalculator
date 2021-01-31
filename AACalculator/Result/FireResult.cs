@@ -62,6 +62,16 @@ namespace AACalculator.Result
         }
 
         /// <summary>
+        /// Returns an empty <see cref="FireResult"/> if the input is null, or simply the input itself otherwise.
+        /// </summary>
+        /// <param name="input">The input to handle safely.</param>
+        /// <returns>An empty <see cref="FireResult"/> if the input is null; the input itself otherwise.</returns>
+        public static FireResult Safe(FireResult input)
+        {
+            return input ?? new FireResult(new Dictionary<UnitType, IEnumerable<HitResult>>());
+        }
+
+        /// <summary>
         /// Gets a flattened list of <see cref="AACalculator.Result.HitResult"/>s.
         /// </summary>
         /// <returns></returns>

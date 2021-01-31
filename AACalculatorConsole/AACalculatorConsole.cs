@@ -26,7 +26,8 @@ namespace AACalculatorConsole
             var result = BattleCalculator.Calculate(Attacker, Defender, new HitSelectorByScore());
             
             if (ShowRounds) PrintRoundResults(result.Rounds);
-            
+
+            Console.WriteLine($"Completed simulation in {result.Rounds.Count} rounds.");
             Console.WriteLine(WinnerMessage(result));
         }
 

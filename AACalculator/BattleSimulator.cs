@@ -56,7 +56,10 @@ namespace AACalculator
                 rounds.Add(result);
 
                 // Check if neither side was able to hit the other. If so, stop the simulation.
-                if (result.AttackerResult.TotalEffectiveHits == 0 && result.DefenderResult.TotalEffectiveHits == 0) break;
+                if (result.AttackerResult.TotalEffectiveHits == 0 &&
+                    result.DefenderResult.TotalEffectiveHits == 0 &&
+                    FireResult.Safe(result.AttackerSurpriseResult).TotalEffectiveHits == 0 &&
+                    FireResult.Safe(result.DefenderSurpriseResult).TotalEffectiveHits == 0) break;
             }
             
             // Return an appropriate battle result.
