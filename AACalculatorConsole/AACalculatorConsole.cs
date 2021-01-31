@@ -60,7 +60,7 @@ namespace AACalculatorConsole
 
         private static void PrintSurpriseStrikeResult(FireResult result, string side)
         {
-            if (result != null) Console.WriteLine($"{side} Surprise Hits: ${result}");
+            if (result != null) Console.WriteLine($"{side} Surprise Hits: {result}");
         }
 
         private static string WinnerMessage(BattleResult result)
