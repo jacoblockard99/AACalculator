@@ -14,16 +14,19 @@ namespace AACalculatorConsole
 
         private bool ShowRounds { get; }
         
-        public AACalculatorConsole(Army attacker, Army defender, bool showRounds)
+        private IHitSelector HitSelector { get; }
+        
+        public AACalculatorConsole(Army attacker, Army defender, bool showRounds, IHitSelector hitSelector)
         {
             Attacker = attacker;
             Defender = defender;
             ShowRounds = showRounds;
+            HitSelector = hitSelector;
         }
 
         public void Launch()
         {
-            var result = BattleCalculator.Calculate(Attacker, Defender, new HitSelectorByScore());
+            var result = BattleCalculator.Calculate(Attacker, Defender, HitSelector);
             
             if (ShowRounds) PrintRoundResults(result.Rounds);
 

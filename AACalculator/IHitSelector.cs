@@ -17,6 +17,6 @@ namespace AACalculator
         /// <param name="amt">The amount of causualties.</param>
         /// <param name="attacker">Whether or not the firing unit is attacking (i.e. not defending).</param>
         /// <returns></returns>
-        IEnumerable<HitResult> Hit(Army army, UnitType firer, Army firingArmy, decimal amt, bool attacker);
+        UnitType Select(Army army, UnitType firer, Army firingArmy, decimal amt, bool attacker);
     }
 }

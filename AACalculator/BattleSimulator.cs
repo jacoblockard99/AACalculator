@@ -172,7 +172,7 @@ namespace AACalculator
             var hits = firingArmy.Units[firer] * (firer.Score(attacker) / 6);
 
             // Remove the calculated causualties and return the result.
-            return HitSelector.Hit(army, firer, firingArmy, hits, attacker);
+            return Hitter.Hit(army, firer, firingArmy, hits, attacker, HitSelector);
         }
 
         /// <summary>
