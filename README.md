@@ -270,7 +270,7 @@ WordSearchSolver is divided into two primary parts: the WordSearchSolver class l
 
 ### Unit Types
 
-Most fundamental to the application is the concept of an army unit type. A type of army unit is represented by the `UnitType` class. Every `UnitType` has a name, plural name, aliases, category (`UnitCategory.Air`, `UnitCategory.Land`, or `UnitCategory.Naval`), offensive score, defensive score, deployment cost, and number of extra lives. Each unit type is held in a `public static readonly` member of `UnitType`. All constructed unit type are stored in the static `UnitType.Values`. `UnitType` has the capability to find a unit type given its name, plural name, or one of its aliases (`.Find()`).
+Most fundamental to the application is the concept of an army unit type. A type of army unit is represented by the `UnitType` class. Every `UnitType` has a name, plural name, aliases, category (`UnitCategory.Air`, `UnitCategory.Land`, or `UnitCategory.Naval`), offensive score, defensive score, deployment cost, and number of extra lives. Each unit type is held in a `public static readonly` member of `UnitType`. All constructed unit types are stored in the static `UnitType.Values`. `UnitType` has the capability to find a unit type given its name, plural name, or one of its aliases (`.Find()`).
 
 ### Armies
 
