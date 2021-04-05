@@ -2,7 +2,7 @@
 
 ## Introduction
 
-AACalculator is a simle little console application written in C# that calculates the most likely winner in an [Axis & Allies](https://www.amazon.com/Avalon-Hill-Axis-Allies-Board/dp/B007TB3R80) battle and the average number of army units that would remain. It does so, not by running an enormous number of simulations and averaging the results, but instead runs an *average simulation*.
+AACalculator is a simple little console application written in C# that calculates the most likely winner in an [Axis & Allies](https://www.amazon.com/Avalon-Hill-Axis-Allies-Board/dp/B007TB3R80) battle and the average number of army units that would remain. It does so, not by running an enormous number of simulations and averaging the results, but instead runs an *average simulation*.
 
 ## Background
 
