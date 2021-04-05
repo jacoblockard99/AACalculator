@@ -11,7 +11,7 @@ namespace AACalculator
             // If the army is empty, no hits are necessary. Return such.
             if (army.Empty) return NoHits();
 
-            var type = selector.Select(army, firer, firingArmy, amt, attacker);
+            var type = selector.Select(army, firer, firingArmy, amt, !attacker);
 
             // Check if the hitType is null. If so, no valid hits are possible. Thus, return an ineffective hit result for the appropriate amount.
             if (type == null) return OneHit(HitResult.NewIneffective(amt));

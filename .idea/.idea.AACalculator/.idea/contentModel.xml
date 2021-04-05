@@ -32,7 +32,7 @@
         <e p="UnitType.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
+          <e p="Release" t="Include">
             <e p="net5.0" t="Include">
               <e p="AACalculator.AssemblyInfo.cs" t="Include" />
             </e>
@@ -45,9 +45,14 @@
         <e p="AACalculatorConsole.csproj" t="IncludeRecursive" />
         <e p="EntryPoint.cs" t="Include" />
         <e p="ManualHitSelector.cs" t="Include" />
+        <e p="StringToUnitTypeConverter.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
+        <e p="lib" t="Include">
+          <e p="Asker.dll" t="Include" />
+          <e p="JLCommons.dll" t="Include" />
+        </e>
         <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
+          <e p="Release" t="Include">
             <e p="net5.0" t="Include">
               <e p="AACalculatorConsole.AssemblyInfo.cs" t="Include" />
             </e>
@@ -59,7 +64,7 @@
         <e p="UnitTypeTest.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
+          <e p="Release" t="Include">
             <e p="net5.0" t="Include">
               <e p="Tests.AssemblyInfo.cs" t="Include" />
             </e>

@@ -13,4 +13,13 @@
       <PackageReference Include="CommandLineParser" Version="2.9.0-preview1" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Reference Include="Asker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>lib\Asker.dll</HintPath>
+      </Reference>
+      <Reference Include="JLCommons, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>lib\JLCommons.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
 </Project>
