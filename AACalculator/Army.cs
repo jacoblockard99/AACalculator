@@ -87,6 +87,8 @@ namespace AACalculator
         /// <returns>A <see cref="HitResult"/> object representing the result of the hit.</returns>
         public HitResult Hit(UnitType type, decimal amt)
         {
+            decimal hit = 0;
+            
             // Ensure that some units of the given type exist in this army.
             if (!Contains(type)) throw new KeyNotFoundException("No units of the given type exist in this Army!");
             
@@ -100,6 +102,7 @@ namespace AACalculator
             else
             {
                 // If not, calculate the remainder and take what lives do exist (by setting it equal to zero).
+                hit += ExtraLives[type];
                 var remainder = amt - ExtraLives[type];
                 ExtraLives[type] = 0;
 
@@ -112,22 +115,21 @@ namespace AACalculator
             {
                 // If it can, remove the necessary number of causualties.
                 Units[type] -= amt;
+                hit += amt;
                 
                 // Check if the number of units is now at the minimum. If so, remove it.
                 if (Units[type] <= UnitMinimum)
                     Units.Remove(type);
-                
-                return new HitResult(type, amt);
             }
             else
             {
                 // If not, store the number of units that *will* be removed and remove the units.
-                var removed = Units[type];
+                hit += Units[type];
                 Units.Remove(type);
-                
-                // Return a new hit result with the number of units that *were* removed.
-                return new HitResult(type, removed);
             }
+            
+            // Return a new hit result with the number of units that were removed.
+            return new HitResult(type, hit);
         }
 
         /// <summary>
