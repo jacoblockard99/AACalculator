@@ -259,6 +259,7 @@ This application is by no means complete! Some intended additions (roughly in or
 
 + **Unit Tests** — Until thorough unit tests are written, it is impossible to guarantee the accuracy of the calculator.
 + **Thorough Breakdown** — The application stores **every single hit** that is simulated. In other words, every round, the application keeps track of which units hit which units and how much. Very little of this information is currently displayed. In the future, there will be a "thorough breakdown" mode.
++ **Better Error Handling** — The current error handling is rather poor. Given an invalid army string, for example, the application explodes.
 + **Other Hit Methods** — A more intelligent hit method that takes into account lives, surprise strikes, destroyers, etc. is needed.
 
 ## How it Works
