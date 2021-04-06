@@ -19,12 +19,12 @@ namespace AACalculator
         public const decimal UnitMinimum = 0.000001M;
         
         /// <summary>
-        /// A private, mutable property behind <see cref="Units"/>.
+        /// A dictionary containing the number of units of each type.
         /// </summary>
         public Dictionary<UnitType, decimal> Units { get; }
 
         /// <summary>
-        /// A private, mutable property behind <see cref="ExtraLives"/>.
+        /// A dictionary containing the number of extra lives of each type.
         /// </summary>
         public Dictionary<UnitType, decimal> ExtraLives { get; }
 
