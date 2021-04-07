@@ -112,7 +112,7 @@ This is because both armies have the exact combat scores. No matter how many rou
 An example of no winner being declared occurs with the following command:
 
 ```
-aacalc -a "1 submarine" -d "1 fighter" -r
+aacalc -a "1 submarine" -d "1 fighter"
 ```
 The result is:
 
